@@ -1,66 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Programa de Lealtad para Tienda en Línea
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Prueba técnica de desarrollo de una aplicación web para la administración de un programa de fidelización de clientes.
 
-## About Laravel
+1. Descripción del proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+El objetivo del proyecto es crear un sistema de lealtad que usara una tienda en linea, donde cada cliente puede acumular puntos por sus compras, tener nivel de fidelidad y con esos puntos canjear recompensas varias.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+El sistema tendria dos apartados:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1.- Un panel administrativo la cual estara destinado al personal que controla la tienda, teniendo un administrador de usuarios, roles y permisos, consultar a los clientes y tener un modulo de supervisacion del programa de laaltad.
 
-## Learning Laravel
+2- El otro seria el portal del cliente, la cual puede consultar sus puntos, que nivel tiene de fidelidad y sus recompensas que tiene disponible y las que puede tener, un historial practicamente de puntos.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Todo esto usaremos una api llamada fakeapi.dev, nos dara los datos de prueba que necesitamos para este proyecto.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+2. Tecnologías utilizadas
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Backend
 
-## Laravel Sponsors
+1.- PHP: lenguaje de programación del servidor.
+2.- Laravel 11: framework principal para desarrollar la lógica de negocio, controladores, modelos, validaciones y endpoints.
+3.- Composer: administración de dependencias PHP.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Frontend previsto
+1.- Blade: motor de plantillas de Laravel.
+2.- Bootstrap: diseño responsivo de las interfaces.
+3.- jQuery: interacciones del lado del cliente.
+4.- AJAX: comunicación asíncrona entre las interfaces y el backend.
 
-### Premium Partners
+Infraestructura
+1.- Git y GitHub: control de versiones y almacenamiento del código fuente.
+2.- Vercel Hobby: plataforma de despliegue de la aplicación.
+3.- Docker: configuración del entorno de ejecución.
+4.- FrankenPHP: servidor de aplicaciones PHP para ejecutar Laravel en Vercel.
+Nota: La base de datos y el almacenamiento de imágenes se definirán e incorporarán en las siguientes etapas.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+3.  Arquitectura del sistema
 
-## Contributing
+En esta etapa el codigo se administra en GitHub y se despliega en vercel, ahi laravel se ejecuta mediante un contenedor Docker apoyado con FrankenPHP.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```mermaid
+flowchart TD
+    A["Desarrollador"] --> B["Git / GitHub"]
+    B -->|"Despliegue"| C["Vercel Hobby"]
+    C --> D["Docker + FrankenPHP"]
+    D --> E["Laravel 11"]
+    E --> F["Blade: página inicial"]
+    G["Navegador"] -->|"HTTPS"| C
+    F -->|"Respuesta HTML"| G
+```
 
-## Code of Conduct
+Siguiendo la linea de desarrollo me permitira crear localmente mis modulos, cuando este listo y probado lo subo a git y de ahi a vercel.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Aqui en este punto de desarrollo aun no e probado la conexion de bd.
 
-## Security Vulnerabilities
+4.-  Decisiones técnicas
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Eleji laravel por que es el framework que mas conosco y trabajo mejor, en las peticiones del documento de desarrollo decia que era libre a elegir, y como no hay mucho tiempo, prefiero realizarlo con lo que conozco, pero si un dado caso requieran otro lenjuage no tengo ningun inconveniente en aprenderlo.
 
-## License
+5.- Despliegue en producción
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+La aplicación se encuentra publicada en:
+
+https://prueba-tecnica-ebon-six.vercel.app
+
+En este punto solo se visualiza correctamente la pagina de bienvenida de laravel.
+
+para que pudiera hacer esto tuve que relacionar unos archivos para que vercel y docker pudieran identificarlo bien.
+
+El proyecto utiliza los siguientes archivos para que funcione:
+
+1.- Dockerfile.vercel: configuración del contenedor y dependencias PHP.
+2.- Caddyfile: configuración del servidor FrankenPHP.
+3.- vercel.json: configuración de servicios y enrutamiento de Vercel.
+4.- .dockerignore: exclusión de archivos innecesarios o privados durante la construcción de la imagen.
+5.- Las variables de producción se administran desde Vercel y no se almacenan directamente en el repositorio.
+
+6.- Estado del proyecto
+
+Fase actual: configuración inicial de infraestructura.
+Ya complete la isntalacion del laravel 11 y que funcione correctamente en vercel.
