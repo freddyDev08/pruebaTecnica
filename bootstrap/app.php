@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Middleware\EnsureActiveStaff;
+use App\Http\Middleware\EnsureStaffPasswordChanged;
+use App\Http\Middleware\EnsureApprovedAccount;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -11,8 +14,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'staff.active' => EnsureActiveStaff::class,
+            'staff.password' => EnsureStaffPasswordChanged::class,
+            'account.approved' => EnsureApprovedAccount::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })->create();
+        // Manejo de excepciones de Laravel.
+    })
+    ->create();
