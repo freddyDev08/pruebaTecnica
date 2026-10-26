@@ -10,6 +10,13 @@
                     </a>
                 </li>
                 @endif
+                @if (auth()->user()->allows('clients.view'))
+                <li>
+                    <a href="{{ route('admin.clientes.index') }}" class="{{ request()->routeIs('admin.clientes.*') ? 'active' : '' }}">
+                        <i class="fe-users"></i><span> Clientes </span>
+                    </a>
+                </li>
+                @endif
                 @if (auth()->user()->allows('roles.manage'))
                 <li>
                     <a href="{{ route('admin.roles.index') }}" class="{{ request()->routeIs('admin.roles.*') ? 'active' : '' }}">

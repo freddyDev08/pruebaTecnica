@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ClienteController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\ChangePasswordController;
@@ -50,6 +51,10 @@ Route::middleware(['auth', 'account.approved', 'verified', 'staff.active', 'staf
         abort_unless($request->user()->allows('panel.view'), 403);
         return view('layouts.body');
     })->name('dashboard');
+
+    Route::get('/admin/clientes', [ClienteController::class, 'index'])->name('admin.clientes.index');
+    Route::get('/admin/clientes/datos', [ClienteController::class, 'data'])->name('admin.clientes.data');
+    Route::post('/admin/clientes/sincronizar', [ClienteController::class, 'sync'])->name('admin.clientes.sync');
 
     Route::get('/admin/usuarios', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('/admin/usuarios/crear', [UserController::class, 'create'])->name('admin.users.create');
