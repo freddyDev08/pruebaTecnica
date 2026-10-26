@@ -78,5 +78,31 @@ El proyecto utiliza los siguientes archivos para que funcione:
 
 6.- Estado del proyecto
 
-Fase actual: configuración inicial de infraestructura.
-Ya complete la isntalacion del laravel 11 y que funcione correctamente en vercel.
+Se completo los roles y permisos junto con los usuarios para crearlos, actualizarlos, eliminarlos, etc.
+Se incluye la parte de sincronizacion de datos del fakeapi.
+
+7.- Como se instala en local
+
+Pasos para instalar el sistema
+
+    1.-composer install
+    2.-El proyecto esta usando como BD MySql
+        php artisan migrate --seed
+    3.-en el env agregar sus respectivas llaves
+        Para fakeAPI
+        FAKEAPI_BASE_URL
+        FAKEAPI_API_KEY
+
+        Para el SMTP
+        MAIL_MAILER
+        MAIL_SCHEME
+        MAIL_HOST
+        MAIL_PORT
+        MAIL_USERNAME
+        MAIL_PASSWORD
+        MAIL_FROM_ADDRESS
+        MAIL_FROM_NAME
+
+        Para crear un super root usar estos parametros en el env
+        SUPER_ROOT_EMAIL
+        SUPER_ROOT_PASSWORD 
